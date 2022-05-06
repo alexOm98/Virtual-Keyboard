@@ -1,0 +1,142 @@
+.wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+}
+
+.title {
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-size: 50px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: cornflowerblue;
+}
+
+.description {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.texarr {
+  display: block;
+  width: 700px;
+  height: 160px;
+  border-radius: 10px;
+}
+
+.none {
+  display: none;
+}
+
+.keyboard {
+  width: 940px;
+  background: #606061;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+  color: white;
+}
+
+.keyboard-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+}
+
+.key {
+  width: 50px;
+  height: 50px;
+  background: gray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.key:hover {
+  background: cornflowerblue;
+}
+
+.is-active {
+  background-color: #3c76e1;
+}
+
+.is-active:hover {
+  background-color: #3c76e1;
+}
+
+.Backspace {
+  width: 160px;
+}
+
+.Tab {
+  width: 75px;
+}
+
+.Delete {
+  width: 75px;
+}
+
+.CapsLock {
+  width: 120px;
+}
+
+.Enter {
+  width: 150px;
+}
+
+.ShiftLeft {
+  width: 220px;
+}
+
+.ShiftRight {
+  width: 50px;
+}
+
+.ControlLeft {
+  width: 75px;
+}
+
+.ControlRight {
+  width: 75px;
+}
+
+.Space {
+  width: 410px;
+}
+/*# sourceMappingURL=style.css.map */
