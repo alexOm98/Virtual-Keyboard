@@ -94,6 +94,7 @@
 
 .is-active {
   background-color: #3c76e1;
+  border-radius: 15px;
 }
 
 .is-active:hover {
