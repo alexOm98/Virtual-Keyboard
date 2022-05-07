@@ -7,8 +7,12 @@ const smallCaps = document.querySelectorAll('.smallcaps');
 const keyCaspLock = document.querySelector('.CapsLock');
 const allRu = document.querySelectorAll('.ru-lang');
 const allEn = document.querySelectorAll('.en-lang');
+const shiftLeft = document.querySelector('.ShiftLeft');
+const shiftRight = document.querySelector('.ShiftRight');
 let lang = 'en';
 let keysPressed = [];
+const alphabetEn = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+const alphabetRu = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'э', 'ю', 'я', 'ь', 'ъ', 'ы'];
 
 for (let i = 0; i < allKeys.length; i += 1) {
   allKeys[i].addEventListener('click', () => {
@@ -17,9 +21,30 @@ for (let i = 0; i < allKeys.length; i += 1) {
     } else if (allKeys[i].innerText === 'Enter') {
       textArea.value += '\n';
     } else if (allKeys[i].innerText === 'Tab') {
-      textArea.value += '     ';
-    } else if (allKeys[i].innerText === 'Shift' || allKeys[i].innerText === 'Caps Lock') {
-      textArea.value += '';
+      textArea.setRangeText(
+        '     ',
+        textArea.selectionStart,
+        textArea.selectionStart,
+        'end',
+      );
+    } else if (allKeys[i].innerText === 'Caps Lock') {
+      if (keyCaspLock.classList.contains('is-active')) {
+        keyCaspLock.classList.remove('is-active');
+        for (let j = 0; j < small.length; j += 1) {
+          small[j].style.display = 'block';
+          big[j].style.display = 'none';
+          caps[j].style.display = 'none';
+          smallCaps[j].style.display = 'none';
+        }
+      } else {
+        keyCaspLock.classList.add('is-active');
+        for (let j = 0; j < small.length; j += 1) {
+          small[j].style.display = 'none';
+          big[j].style.display = 'none';
+          caps[j].style.display = 'block';
+          smallCaps[j].style.display = 'none';
+        }
+      }
     } else textArea.value += allKeys[i].innerText;
   });
   allKeys[i].addEventListener('mousedown', () => {
@@ -30,7 +55,16 @@ for (let i = 0; i < allKeys.length; i += 1) {
   });
 }
 document.addEventListener('keydown', (event) => {
-  if (event.code === 'Tab' || event.code === 'AltLeft') {
+  if (event.code === 'Tab') {
+    event.preventDefault();
+    textArea.setRangeText(
+      '     ',
+      textArea.selectionStart,
+      textArea.selectionStart,
+      'end',
+    );
+  }
+  if (event.code === 'AltLeft' || event.code === 'AltRight') {
     event.preventDefault();
   }
   keysPressed.push(event.code);
@@ -84,6 +118,27 @@ document.addEventListener('keydown', (event) => {
         caps[i].style.display = 'none';
         smallCaps[i].style.display = 'none';
       }
+    }
+  }
+  if (keyCaspLock.classList.contains('is-active') && (alphabetEn.includes(event.key) || alphabetRu.includes(event.key))) {
+    if ((shiftLeft.classList.contains('is-active') || shiftRight.classList.contains('is-active')) && event.getModifierState('CapsLock')) {
+      event.preventDefault();
+      const letterDown = event.key.toLowerCase();
+      textArea.setRangeText(
+        letterDown,
+        textArea.selectionStart,
+        textArea.selectionStart,
+        'end',
+      );
+    } else {
+      event.preventDefault();
+      const letterUp = event.key.toUpperCase();
+      textArea.setRangeText(
+        letterUp,
+        textArea.selectionStart,
+        textArea.selectionStart,
+        'end',
+      );
     }
   }
 });
