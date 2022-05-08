@@ -913,7 +913,6 @@ document.body.innerHTML = `    <div class="wrap">
 </div>
 <p class="description">Клавиатура создана в операционной системе Windows. Для переключения языка нажмите: левый Сtrl +  левый Alt.</p>
 <p class="description">Убедитесь, что язык раскадки вашей клавиатуры соотвествует языку на виртуальной клавиатуры.</p>
-
 </div>`;
 document.getElementById('quote').innerHTML = '`';
 document.getElementById('quote2').innerHTML = '`';
