@@ -911,8 +911,8 @@ document.body.innerHTML = `    <div class="wrap">
     </div>
     
 </div>
-<p class="description">Клавиатура создана в операционной системе Windows. Для переключения языка нажмите: левый Сtrl +  левый Alt.</p>
-<p class="description">Убедитесь, что язык раскадки вашей клавиатуры соотвествует языку на виртуальной клавиатуры.</p>
+<p class="description">Клавиатура создана в операционной системе Windows.</p>
+<p class="description">Для переключения языка нажмите: левый Сtrl +  левый Alt.</p>
 </div>`;
 document.getElementById('quote').innerHTML = '`';
 document.getElementById('quote2').innerHTML = '`';
@@ -925,8 +925,6 @@ const smallCaps = document.querySelectorAll('.smallcaps');
 const keyCaspLock = document.querySelector('.CapsLock');
 const allRu = document.querySelectorAll('.ru-lang');
 const allEn = document.querySelectorAll('.en-lang');
-const shiftLeft = document.querySelector('.ShiftLeft');
-const shiftRight = document.querySelector('.ShiftRight');
 let lang = 'en';
 class Stack {
   constructor() {
@@ -949,10 +947,6 @@ class Stack {
   }
 }
 const stack = new Stack();
-const alphabetEn = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-const alphabetRu = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'э', 'ю', 'я', 'ь', 'ъ', 'ы'];
-const alphabetUpperEn = alphabetEn.map((el) => el.toUpperCase());
-const alphabetUpperRu = alphabetRu.map((el) => el.toUpperCase());
 for (let i = 0; i < allKeys.length; i += 1) {
   allKeys[i].addEventListener('click', () => {
     if (allKeys[i].innerText === 'Backspace') {
@@ -1031,6 +1025,16 @@ for (let i = 0; i < allKeys.length; i += 1) {
   });
 }
 document.addEventListener('keydown', (event) => {
+  const lSE = ['`', '2', '3', '4', '6', '7', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'];
+  const lSEC = ['`', '2', '3', '4', '6', '7', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/'];
+  const lSES = ['~', '@', '#', '$', '^', '&', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?'];
+  const lSECS = ['~', '@', '#', '$', '^', '&', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '{', '}', '|', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ':', '"', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '<', '>', '?'];
+
+  const lSR = ['ё', '2', '3', '4', '6', '7', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.'];
+  const lSRC = ['Ё', '2', '3', '4', '6', '7', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '.'];
+  const lSRS = ['Ё', '"', '№', ';', ':', '?', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '/', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ','];
+  const lSRCS = ['ё', '"', '№', ';', ':', '?', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '/', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', ','];
+  const allSymbolsKeys = [...lSE, ...lSEC, ...lSES, ...lSECS, ...lSR, ...lSRC, ...lSRS, ...lSRCS];
   if (event.code === 'Tab') {
     event.preventDefault();
     textArea.setRangeText(
@@ -1045,6 +1049,21 @@ document.addEventListener('keydown', (event) => {
   }
   stack.push(event.code);
   if (stack.find('ControlLeft') && event.code === 'AltLeft') {
+    if (lang === 'en') {
+      for (let i = 0; i < allRu.length; i += 1) {
+        allRu[i].style.display = 'block';
+        allEn[i].style.display = 'none';
+      }
+      lang = 'ru';
+    } else {
+      for (let i = 0; i < allEn.length; i += 1) {
+        allRu[i].style.display = 'none';
+        allEn[i].style.display = 'block';
+      }
+      lang = 'en';
+    }
+  }
+  if (stack.find('AltLeft') && event.code === 'ControlLeft') {
     if (lang === 'en') {
       for (let i = 0; i < allRu.length; i += 1) {
         allRu[i].style.display = 'block';
@@ -1096,26 +1115,15 @@ document.addEventListener('keydown', (event) => {
       }
     }
   }
-  if (keyCaspLock.classList.contains('is-active') && (alphabetEn.includes(event.key) || alphabetRu.includes(event.key) || alphabetUpperEn.includes(event.key) || alphabetUpperRu.includes(event.key))) {
-    if (shiftLeft.classList.contains('is-active') || shiftRight.classList.contains('is-active')) {
-      event.preventDefault();
-      const letterDown = event.key.toLowerCase();
-      textArea.setRangeText(
-        letterDown,
-        textArea.selectionStart,
-        textArea.selectionStart,
-        'end',
-      );
-    } else {
-      event.preventDefault();
-      const letterUp = event.key.toUpperCase();
-      textArea.setRangeText(
-        letterUp,
-        textArea.selectionStart,
-        textArea.selectionStart,
-        'end',
-      );
-    }
+  if (allSymbolsKeys.includes(event.key)) {
+    const letter = document.querySelector(`.${event.code}`).innerText;
+    event.preventDefault();
+    textArea.setRangeText(
+      letter,
+      textArea.selectionStart,
+      textArea.selectionStart,
+      'end',
+    );
   }
 });
 document.addEventListener('keyup', (event) => {
