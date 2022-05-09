@@ -984,6 +984,8 @@ for (let i = 0; i < allKeys.length; i += 1) {
         textArea.selectionStart,
         'end',
       );
+    } else if (allKeys[i].innerText === 'Shift') {
+      textArea.value += '';
     } else if (allKeys[i].innerText === 'Win' || allKeys[i].innerText === 'Ctrl' || allKeys[i].innerText === 'Alt') {
       textArea.value += '';
     } else if (allKeys[i].innerText === 'Caps Lock') {
@@ -1017,10 +1019,44 @@ for (let i = 0; i < allKeys.length; i += 1) {
     if (allKeys[i].innerText !== 'Caps Lock') {
       allKeys[i].classList.add('is-active');
     }
+    if (allKeys[i].innerText === 'Shift') {
+      if (keyCaspLock.classList.contains('is-active')) {
+        for (let j = 0; j < small.length; j += 1) {
+          small[j].style.display = 'none';
+          big[j].style.display = 'none';
+          caps[j].style.display = 'none';
+          smallCaps[j].style.display = 'block';
+        }
+      } else {
+        for (let j = 0; j < small.length; j += 1) {
+          small[j].style.display = 'none';
+          big[j].style.display = 'block';
+          caps[j].style.display = 'none';
+          smallCaps[j].style.display = 'none';
+        }
+      }
+    }
   });
   allKeys[i].addEventListener('mouseup', () => {
     if (allKeys[i].innerText !== 'Caps Lock') {
       allKeys[i].classList.remove('is-active');
+    }
+    if (allKeys[i].innerText === 'Shift') {
+      if (keyCaspLock.classList.contains('is-active')) {
+        for (let j = 0; j < small.length; j += 1) {
+          small[j].style.display = 'none';
+          big[j].style.display = 'none';
+          caps[j].style.display = 'block';
+          smallCaps[j].style.display = 'none';
+        }
+      } else {
+        for (let j = 0; j < small.length; j += 1) {
+          small[j].style.display = 'block';
+          big[j].style.display = 'none';
+          caps[j].style.display = 'none';
+          smallCaps[j].style.display = 'none';
+        }
+      }
     }
   });
 }
